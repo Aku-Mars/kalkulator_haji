@@ -8,8 +8,8 @@ $waktu_bulan = ceil($total_haji / $dana_per_bulan);
 
 // Simpan data ke database
 $servername = "localhost";
-$username = "username"; // Ganti dengan username MySQL Anda
-$password = "password"; // Ganti dengan password MySQL Anda
+$username = "admin"; // Ganti dengan username MySQL Anda
+$password = "SOK1PSTIC"; // Ganti dengan password MySQL Anda
 $dbname = "haji_tabungan";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
