@@ -3,13 +3,11 @@ $nama = $_POST['nama'];
 $total_haji = $_POST['total_haji'];
 $dana_per_bulan = $_POST['dana_per_bulan'];
 
-// Hitung waktu yang dibutuhkan (dalam bulan)
 $waktu_bulan = ceil($total_haji / $dana_per_bulan);
 
-// Simpan data ke database
 $servername = "localhost";
-$username = "admin"; // Ganti dengan username MySQL Anda
-$password = "SOK1PSTIC"; // Ganti dengan password MySQL Anda
+$username = "admin";
+$password = "SOK1PSTIC";
 $dbname = "haji_tabungan";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
