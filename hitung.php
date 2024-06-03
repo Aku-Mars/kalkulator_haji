@@ -4,7 +4,9 @@ include 'koneksi.php';
 $nama = $_POST['nama'];
 $harga_haji = $_POST['harga_haji'];
 $tabungan_perbulan = $_POST['tabungan_perbulan'];
-$lama_menabung = $_POST['lama_menabung'];
+
+// Menghitung lama menabung
+$lama_menabung = ceil($harga_haji / $tabungan_perbulan);
 
 $total_tabungan = $tabungan_perbulan * $lama_menabung;
 $kekurangan = $harga_haji - $total_tabungan;
