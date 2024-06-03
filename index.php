@@ -19,6 +19,38 @@
                 <input type="number" id="dana_per_bulan" name="dana_per_bulan" required><br><br>
                 <input type="button" value="Hitung" onclick="submitForm()">
             </form>
+
+            <!-- Tambahkan bagian untuk menampilkan data -->
+            <div id="data-container">
+                <?php
+                    $servername = "localhost";
+                    $username = "admin";
+                    $password = "SOK1PSTIC";
+                    $dbname = "haji_tabungan";
+
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $sql = "SELECT * FROM users";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        echo "<h3>Data Tersimpan:</h3>";
+                        echo "<table>";
+                        echo "<tr><th>Nama</th><th>Total Haji</th><th>Dana per Bulan</th></tr>";
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr><td>".$row["nama"]."</td><td>".$row["total_haji"]."</td><td>".$row["dana_per_bulan"]."</td></tr>";
+                        }
+                        echo "</table>";
+                    } else {
+                        echo "Tidak ada data tersimpan.";
+                    }
+                    $conn->close();
+                ?>
+            </div>
         </div>
     </div>
 
