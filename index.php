@@ -191,6 +191,9 @@
             <input type="text" id="harga_haji" name="harga_haji">
             <label for="tabungan_perbulan">Tabungan per Bulan:</label>
             <input type="text" id="tabungan_perbulan" name="tabungan_perbulan">
+            <label for="lama_menabung">Lama Menabung (bulan):</label>
+            <input type="text" id="lama_menabung" name="lama_menabung" readonly>
+            <p id="hasilKonversi"></p>
             <input type="submit" id="hitungBtn" value="Hitung">
         </form>
 
@@ -252,8 +255,14 @@
                 e.preventDefault();
                 var hargaHaji = $('#harga_haji').val();
                 var tabunganPerbulan = $('#tabungan_perbulan').val();
-                var lamaMenabung = Math.ceil(hargaHaji / tabunganPerbulan);
-                $('#lama_menabung').val(lamaMenabung);
+                var lamaMenabungBulan = Math.ceil(hargaHaji / tabunganPerbulan);
+                var lamaMenabungTahun = Math.floor(lamaMenabungBulan / 12); 
+                var sisaBulan = lamaMenabungBulan % 12; 
+
+                $('#lama_menabung').val(lamaMenabungBulan); 
+                
+                var hasilKonversi = lamaMenabungTahun + " tahun " + sisaBulan + " bulan";
+                $('#hasilKonversi').text(hasilKonversi);
 
                 $.ajax({
                     type: 'POST',

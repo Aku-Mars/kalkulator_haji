@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost'; // Ganti dengan host Anda
-$username = 'admin'; // Ganti dengan username database Anda
-$password = 'SOK1PSTIC'; // Ganti dengan password database Anda
-$database = 'haji_tabungan'; // Ganti dengan nama database Anda
+$host = 'localhost'; 
+$username = 'admin'; 
+$password = 'SOK1PSTIC'; 
+$database = 'haji_tabungan';
 
 $conn = new mysqli($host, $username, $password, $database);
 
