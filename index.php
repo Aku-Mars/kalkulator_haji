@@ -134,6 +134,25 @@
             background-color: #d32f2f;
         }
 
+        #hitungBtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 50%; 
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #hitungBtn:hover {
+        background-color: #45a049;
+    }
+
         .popup {
             display: none;
             position: fixed;
@@ -146,46 +165,16 @@
             z-index: 9999;
         }
 
-        /* Style untuk tombol "Hitung" */
-        .btn:link,
-        .btn:visited {
-            text-transform: uppercase;
-            text-decoration: none;
-            color: rgb(27, 27, 27);
-            padding: 10px 30px;
-            border: 1px solid;
-            border-radius: 1000px;
-            display: inline-block;
-            transition: all .2s;
-            position: relative;
+        label {
+            margin-top: 10px;
+            display: block; 
         }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(27, 27, 27, .5);
-        }
-
-        .btn:active {
-            transform: translateY(-3px);
-        }
-
-        .btn::after {
-            content: "";
-            display: inline-block;
-            height: 100%;
-            width: 100%;
-            border-radius: 100px;
-            top: 0;
-            left: 0;
-            position: absolute;
-            z-index: -1;
-            transition: all .3s;
-        }
-
-        .btn:hover::after {
-            background-color: rgb(0, 238, 255);
-            transform: scaleX(1.4) scaleY(1.5);
-            opacity: 0;
+        input[type="text"] {
+            margin-bottom: 10px; 
+            width: 100%; 
+            padding: 10px;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -196,14 +185,13 @@
 
     <div class="container">
         <form id="hajiForm" action="hitung.php" method="post">
-            <label for="nama">Nama:</label><br>
-            <input type="text" id="nama" name="nama"><br>
-            <label for="harga_haji">Harga Haji:</label><br>
-            <input type="text" id="harga_haji" name="harga_haji"><br>
-            <label for="tabungan_perbulan">Tabungan per Bulan:</label><br>
-            <input type="text" id="tabungan_perbulan" name="tabungan_perbulan"><br><br>
-            <!-- Tombol "Hitung" dengan gaya khusus -->
-            <input type="submit" value="Hitung" class="btn">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama">
+            <label for="harga_haji">Harga Haji:</label>
+            <input type="text" id="harga_haji" name="harga_haji">
+            <label for="tabungan_perbulan">Tabungan per Bulan:</label>
+            <input type="text" id="tabungan_perbulan" name="tabungan_perbulan">
+            <input type="submit" id="hitungBtn" value="Hitung">
         </form>
 
         <div id="popup" class="popup">
