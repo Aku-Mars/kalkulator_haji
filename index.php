@@ -23,59 +23,11 @@
             margin: 0;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            background-color: #333;
-            width: 100%;
-            text-align: center;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 10px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ccc;
-        }
-
-        .nav-toggle {
-            cursor: pointer;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            font-size: 16px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .nav-toggle:hover {
-            background-color: #444;
-        }
-
-        .show-nav {
-            display: flex;
-        }
-
         h2 {
+            padding-top: 30px;
+        }
+        
+        h3 {
             padding-top: 30px;
         }
 
@@ -193,10 +145,11 @@
     </header>
 
     <div class="container">
+        <h3>Ini Merupakan Kalkulator Sederhana Yang Dapat Menghitung, Lamanya Anda Menabung Dari Jumlah Anda Menabung Perbulannya Hingga Biaya Hajinya Tercukupi</h3>
         <form id="hajiForm" action="hitung.php" method="post">
             <label for="nama">Nama:</label>
             <input type="text" id="nama" name="nama">
-            <label for="harga_haji">Harga Haji:</label>
+            <label for="harga_haji">Biaya Haji:</label>
             <input type="text" id="harga_haji" name="harga_haji">
             <label for="tabungan_perbulan">Tabungan per Bulan:</label>
             <input type="text" id="tabungan_perbulan" name="tabungan_perbulan">
@@ -212,7 +165,7 @@
         <table>
             <tr>
                 <th>Nama</th>
-                <th>Harga Haji</th>
+                <th>Biaya Haji</th>
                 <th>Tabungan per Bulan</th>
                 <th>Lama Menabung</th>
                 <th>Aksi</th>
