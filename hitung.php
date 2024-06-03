@@ -21,4 +21,14 @@ if ($kekurangan <= 0) {
 } else {
     echo "Anda masih kekurangan $kekurangan untuk mencapai target tabungan haji.";
 }
+
+// Simpan data ke database
+$sql = "INSERT INTO haji (nama, harga_haji, tabungan_perbulan, lama_menabung) VALUES ('$nama', '$harga_haji', '$tabungan_perbulan', '$lama_menabung')";
+if ($conn->query($sql) === TRUE) {
+    echo "<br>Data berhasil disimpan ke database.";
+} else {
+    echo "<br>Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 ?>

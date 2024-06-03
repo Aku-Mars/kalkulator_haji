@@ -27,9 +27,7 @@
         <label for="harga_haji">Harga Haji:</label><br>
         <input type="text" id="harga_haji" name="harga_haji"><br>
         <label for="tabungan_perbulan">Tabungan per Bulan:</label><br>
-        <input type="text" id="tabungan_perbulan" name="tabungan_perbulan"><br>
-        <label for="lama_menabung">Lama Menabung (bulan):</label><br>
-        <input type="text" id="lama_menabung" name="lama_menabung"><br><br>
+        <input type="text" id="tabungan_perbulan" name="tabungan_perbulan"><br><br>
         <input type="submit" value="Hitung">
     </form>
 
@@ -42,6 +40,13 @@
         $(document).ready(function(){
             $('#hajiForm').submit(function(e){
                 e.preventDefault(); // Menghentikan pengiriman formulir standar
+
+                // Menghitung lama menabung
+                var hargaHaji = $('#harga_haji').val();
+                var tabunganPerbulan = $('#tabungan_perbulan').val();
+                var lamaMenabung = Math.ceil(hargaHaji / tabunganPerbulan);
+                $('#lama_menabung').val(lamaMenabung);
+
                 $.ajax({
                     type: 'POST',
                     url: 'hitung.php',
