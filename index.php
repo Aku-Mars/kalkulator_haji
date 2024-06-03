@@ -29,6 +29,14 @@
         th {
             background-color: #f2f2f2;
         }
+        .hapus-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +63,7 @@
             <th>Harga Haji</th>
             <th>Tabungan per Bulan</th>
             <th>Lama Menabung</th>
+            <th>Aksi</th>
         </tr>
         <?php
         include 'koneksi.php';
@@ -69,16 +78,31 @@
                 echo "<td>" . $row['harga_haji'] . "</td>";
                 echo "<td>" . $row['tabungan_perbulan'] . "</td>";
                 echo "<td>" . $row['lama_menabung'] . " bulan</td>";
+                echo "<td><button class='hapus-btn' onclick='hapusData(" . $row['id'] . ")'>Hapus</button></td>";
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='4'>Tidak ada data tersimpan.</td></tr>";
+            echo "<tr><td colspan='5'>Tidak ada data tersimpan.</td></tr>";
         }
         $conn->close();
         ?>
     </table>
 
     <script>
+        function hapusData(id) {
+            if (confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'hapus.php',
+                    data: { id: id },
+                    success: function(response) {
+                        // Refresh halaman setelah hapus berhasil
+                        location.reload();
+                    }
+                });
+            }
+        }
+
         $(document).ready(function(){
             $('#hajiForm').submit(function(e){
                 e.preventDefault(); // Menghentikan pengiriman formulir standar
