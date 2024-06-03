@@ -13,7 +13,7 @@
         }
 
         header {
-            background-color: #333;
+            background-color: #4CAF50;
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -145,6 +145,48 @@
             border: 1px solid #ccc;
             z-index: 9999;
         }
+
+        /* Style untuk tombol "Hitung" */
+        .btn:link,
+        .btn:visited {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: rgb(27, 27, 27);
+            padding: 10px 30px;
+            border: 1px solid;
+            border-radius: 1000px;
+            display: inline-block;
+            transition: all .2s;
+            position: relative;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(27, 27, 27, .5);
+        }
+
+        .btn:active {
+            transform: translateY(-3px);
+        }
+
+        .btn::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: 100px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            z-index: -1;
+            transition: all .3s;
+        }
+
+        .btn:hover::after {
+            background-color: rgb(0, 238, 255);
+            transform: scaleX(1.4) scaleY(1.5);
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -160,7 +202,8 @@
             <input type="text" id="harga_haji" name="harga_haji"><br>
             <label for="tabungan_perbulan">Tabungan per Bulan:</label><br>
             <input type="text" id="tabungan_perbulan" name="tabungan_perbulan"><br><br>
-            <input type="submit" value="Hitung">
+            <!-- Tombol "Hitung" dengan gaya khusus -->
+            <input type="submit" value="Hitung" class="btn">
         </form>
 
         <div id="popup" class="popup">
@@ -199,6 +242,7 @@
         $conn->close();
         ?>
     </table>
+    </div>
 
     <script>
         function hapusData(id) {
@@ -208,8 +252,8 @@
                     url: 'hapus.php',
                     data: { id: id },
                     success: function(response) {
-                        alert(response); // Tampilkan pesan respons dari server
-                        location.reload(); // Muat ulang halaman setelah penghapusan berhasil
+                        alert(response);
+                        location.reload();
                     }
                 });
             }
@@ -217,9 +261,7 @@
 
         $(document).ready(function(){
             $('#hajiForm').submit(function(e){
-                e.preventDefault(); // Menghentikan pengiriman formulir standar
-
-                // Menghitung lama menabung
+                e.preventDefault();
                 var hargaHaji = $('#harga_haji').val();
                 var tabunganPerbulan = $('#tabungan_perbulan').val();
                 var lamaMenabung = Math.ceil(hargaHaji / tabunganPerbulan);
