@@ -29,6 +29,7 @@
         
         h3 {
             padding-top: 30px;
+            text-align: justify;
         }
 
         .container {
@@ -145,7 +146,7 @@
     </header>
 
     <div class="container">
-        <h3>Ini Merupakan Kalkulator Sederhana Yang Dapat Menghitung, Lamanya Anda Menabung Dari Jumlah Anda Menabung Perbulannya Hingga Biaya Hajinya Tercukupi</h3>
+        <h3>Ini Merupakan Kalkulator Sederhana Yang Dapat Menghitung Berapa lama Anda Harus Menabung Dari Jumlah Anda Menabung Perbulannya Hingga Biaya Hajinya Tercukupi</h3>
         <form id="hajiForm" action="hitung.php" method="post">
             <label for="nama">Nama:</label>
             <input type="text" id="nama" name="nama">
