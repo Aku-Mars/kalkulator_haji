@@ -164,6 +164,13 @@
             border: 1px solid #ccc;
             z-index: 9999;
         }
+        
+        .popup .close {
+        font-size: 24px;
+        background-color: red;
+        cursor: pointer;
+        }
+
 
         label {
             margin-top: 10px;
@@ -262,6 +269,7 @@
                     success: function(response) {
                         $('#popupContent').html(response);
                         $('#popup').show();
+                        $('.popup .close').css({'font-size': '24px', 'color': 'black', 'cursor': 'pointer'});
                     }
                 });
             });
