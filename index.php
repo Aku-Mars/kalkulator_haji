@@ -8,6 +8,21 @@
 </head>
 <body>
     <div class="container">
+        <div class="card">
+            <h2>Data Tabungan Haji</h2>
+            <form action="hitung.php" method="POST">
+                <label for="nama">Nama:</label><br>
+                <input type="text" id="nama" name="nama" required><br>
+                <label for="total_haji">Total Haji (dalam rupiah):</label><br>
+                <input type="number" id="total_haji" name="total_haji" required><br>
+                <label for="dana_per_bulan">Dana yang Bisa Ditabung per Bulan (dalam rupiah):</label><br>
+                <input type="number" id="dana_per_bulan" name="dana_per_bulan" required><br><br>
+                <input type="submit" value="Hitung">
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
         <h2>Data Tabungan Haji</h2>
         <?php
         $servername = "localhost";
