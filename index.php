@@ -11,8 +11,8 @@
         <h2>Data Tabungan Haji</h2>
         <?php
         $servername = "localhost";
-        $username = "admin"; // Ganti dengan username MySQL Anda
-        $password = "SOK1PSTIC"; // Ganti dengan password MySQL Anda
+        $username = "admin";
+        $password = "SOK1PSTIC";
         $dbname = "haji_tabungan";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
