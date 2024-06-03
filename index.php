@@ -167,7 +167,7 @@
         
         .popup .close {
         font-size: 24px;
-        background-color: red;
+        color: red;
         cursor: pointer;
         height: 5px;
         width: 5px;
@@ -271,7 +271,7 @@
                     success: function(response) {
                         $('#popupContent').html(response);
                         $('#popup').show();
-                        $('.popup .close').css({'font-size': '24px', 'color': 'black', 'cursor': 'pointer'});
+                        $('.popup .close').css({'font-size': '24px', 'color': 'red', 'cursor': 'pointer'});
                     }
                 });
             });
@@ -279,6 +279,7 @@
 
         function closePopup() {
             $('#popup').hide();
+            location.reload();
         }
     </script>
 </body>
