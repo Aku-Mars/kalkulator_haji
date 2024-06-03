@@ -16,7 +16,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO users (nama, total_haji, dana_per_bulan) VALUES ('$nama', '$total_haji', '$dana_per_bulan')";
+$sql = "INSERT INTO users (nama, total_haji, dana_per_bulan, lama_tabungan) VALUES ('$nama', '$total_haji', '$dana_per_bulan', '$waktu_bulan')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Data berhasil disimpan. Waktu yang dibutuhkan untuk menabung haji: $waktu_bulan bulan.";

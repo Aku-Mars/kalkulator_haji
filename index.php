@@ -40,9 +40,9 @@
                     if ($result->num_rows > 0) {
                         echo "<h3>Data Tersimpan:</h3>";
                         echo "<table>";
-                        echo "<tr><th>Nama</th><th>Total Haji</th><th>Dana per Bulan</th></tr>";
+                        echo "<tr><th>Nama</th><th>Total Haji</th><th>Dana per Bulan</th><th>Lama Tabungan (bulan)</th></tr>";
                         while($row = $result->fetch_assoc()) {
-                            echo "<tr><td>".$row["nama"]."</td><td>".$row["total_haji"]."</td><td>".$row["dana_per_bulan"]."</td></tr>";
+                            echo "<tr><td>".$row["nama"]."</td><td>".$row["total_haji"]."</td><td>".$row["dana_per_bulan"]."</td><td>".$row["lama_tabungan"]."</td></tr>";
                         }
                         echo "</table>";
                     } else {
@@ -50,6 +50,7 @@
                     }
                     $conn->close();
                 ?>
+
             </div>
         </div>
     </div>
