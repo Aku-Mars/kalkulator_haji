@@ -169,6 +169,8 @@
         font-size: 24px;
         background-color: red;
         cursor: pointer;
+        height: 5px;
+        width: 5px;
         }
 
 
