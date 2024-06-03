@@ -21,16 +21,36 @@
 </head>
 <body>
     <h1>Kalkulator Haji</h1>
-    <form id="hajiForm" action="hitung.php" method="post">
-        <label for="nama">Nama:</label><br>
-        <input type="text" id="nama" name="nama"><br>
-        <label for="harga_haji">Harga Haji:</label><br>
-        <input type="text" id="harga_haji" name="harga_haji"><br>
-        <label for="tabungan_perbulan">Tabungan per Bulan:</label><br>
-        <input type="text" id="tabungan_perbulan" name="tabungan_perbulan"><br><br>
-        <input type="submit" value="Hitung">
-    </form>
+    <?php
+    include 'koneksi.php';
 
+    // Query untuk mengambil data terakhir dari database
+    $sql = "SELECT * FROM haji ORDER BY id DESC LIMIT 1";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nama = $row['nama'];
+        $harga_haji = $row['harga_haji'];
+        $tabungan_perbulan = $row['tabungan_perbulan'];
+        $lama_menabung = $row['lama_menabung'];
+
+        echo "<form id='hajiForm'>";
+        echo "  <label for='nama'>Nama:</label><br>";
+        echo "  <input type='text' id='nama' name='nama' value='$nama'><br>";
+        echo "  <label for='harga_haji'>Harga Haji:</label><br>";
+        echo "  <input type='text' id='harga_haji' name='harga_haji' value='$harga_haji'><br>";
+        echo "  <label for='tabungan_perbulan'>Tabungan per Bulan:</label><br>";
+        echo "  <input type='text' id='tabungan_perbulan' name='tabungan_perbulan' value='$tabungan_perbulan'><br>";
+        echo "  <label for='lama_menabung'>Lama Menabung (bulan):</label><br>";
+        echo "  <input type='text' id='lama_menabung' name='lama_menabung' value='$lama_menabung'><br><br>";
+        echo "  <input type='submit' value='Hitung'>";
+        echo "</form>";
+    } else {
+        echo "<p>Data tidak ditemukan.</p>";
+    }
+    ?>
+    
     <div id="popup" class="popup">
         <span class="close" onclick="closePopup()">&times;</span>
         <p id="popupContent"></p>
