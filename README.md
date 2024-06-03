@@ -5,12 +5,12 @@ Database Query
 CREATE DATABASE IF NOT EXISTS haji_tabungan;
 USE haji_tabungan;
 
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE IF NOT EXISTS haji (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nama VARCHAR(100),
-    total_haji INT,
-    dana_per_bulan INT,
-    lama_tabungan INT
+    harga_haji DECIMAL(10,2),
+    tabungan_perbulan DECIMAL(10,2),
+    lama_menabung INT
 );
 
 ```

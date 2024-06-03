@@ -3,58 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Tabungan Haji</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Kalkulator Haji</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f4f4f4;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 9999;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <h2>Data Tabungan Haji</h2>
-            <form id="formTabungan">
-                <label for="nama">Nama:</label><br>
-                <input type="text" id="nama" name="nama" required><br>
-                <label for="total_haji">Total Haji (dalam rupiah):</label><br>
-                <input type="number" id="total_haji" name="total_haji" required><br>
-                <label for="dana_per_bulan">Dana yang Bisa Ditabung per Bulan (dalam rupiah):</label><br>
-                <input type="number" id="dana_per_bulan" name="dana_per_bulan" required><br><br>
-                <input type="button" value="Hitung" onclick="submitForm()">
-            </form>
+    <h1>Kalkulator Haji</h1>
+    <form id="hajiForm" action="hitung.php" method="post">
+        <label for="nama">Nama:</label><br>
+        <input type="text" id="nama" name="nama"><br>
+        <label for="harga_haji">Harga Haji:</label><br>
+        <input type="text" id="harga_haji" name="harga_haji"><br>
+        <label for="tabungan_perbulan">Tabungan per Bulan:</label><br>
+        <input type="text" id="tabungan_perbulan" name="tabungan_perbulan"><br>
+        <label for="lama_menabung">Lama Menabung (bulan):</label><br>
+        <input type="text" id="lama_menabung" name="lama_menabung"><br><br>
+        <input type="submit" value="Hitung">
+    </form>
 
-            <!-- Tambahkan bagian untuk menampilkan data -->
-            <div id="data-container">
-                <?php
-                    $servername = "localhost";
-                    $username = "admin";
-                    $password = "SOK1PSTIC";
-                    $dbname = "haji_tabungan";
-
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
-
-                    $sql = "SELECT * FROM users";
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        echo "<h3>Data Tersimpan:</h3>";
-                        echo "<table>";
-                        echo "<tr><th>Nama</th><th>Total Haji</th><th>Dana per Bulan</th><th>Lama Tabungan (bulan)</th></tr>";
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr><td>".$row["nama"]."</td><td>".$row["total_haji"]."</td><td>".$row["dana_per_bulan"]."</td><td>".$row["lama_tabungan"]."</td></tr>";
-                        }
-                        echo "</table>";
-                    } else {
-                        echo "Tidak ada data tersimpan.";
-                    }
-                    $conn->close();
-                ?>
-
-            </div>
-        </div>
+    <div id="popup" class="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p id="popupContent"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#hajiForm').submit(function(e){
+                e.preventDefault(); // Menghentikan pengiriman formulir standar
+                $.ajax({
+                    type: 'POST',
+                    url: 'hitung.php',
+                    data: $('#hajiForm').serialize(),
+                    success: function(response) {
+                        $('#popupContent').html(response);
+                        $('#popup').show();
+                    }
+                });
+            });
+        });
+
+        function closePopup() {
+            $('#popup').hide();
+        }
+    </script>
 </body>
 </html>

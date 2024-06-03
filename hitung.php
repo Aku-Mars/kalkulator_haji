@@ -1,28 +1,22 @@
 <?php
+include 'koneksi.php';
+
 $nama = $_POST['nama'];
-$total_haji = $_POST['total_haji'];
-$dana_per_bulan = $_POST['dana_per_bulan'];
+$harga_haji = $_POST['harga_haji'];
+$tabungan_perbulan = $_POST['tabungan_perbulan'];
+$lama_menabung = $_POST['lama_menabung'];
 
-$waktu_bulan = ceil($total_haji / $dana_per_bulan);
+$total_tabungan = $tabungan_perbulan * $lama_menabung;
+$kekurangan = $harga_haji - $total_tabungan;
 
-$servername = "localhost";
-$username = "admin";
-$password = "SOK1PSTIC";
-$dbname = "haji_tabungan";
+echo "Nama: $nama <br>";
+echo "Harga Haji: $harga_haji <br>";
+echo "Tabungan per Bulan: $tabungan_perbulan <br>";
+echo "Lama Menabung: $lama_menabung bulan <br><br>";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "INSERT INTO users (nama, total_haji, dana_per_bulan, lama_tabungan) VALUES ('$nama', '$total_haji', '$dana_per_bulan', '$waktu_bulan')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Data berhasil disimpan. Waktu yang dibutuhkan untuk menabung haji: $waktu_bulan bulan.";
+if ($kekurangan <= 0) {
+    echo "Anda telah mencapai target tabungan untuk haji.";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Anda masih kekurangan $kekurangan untuk mencapai target tabungan haji.";
 }
-
-$conn->close();
 ?>
